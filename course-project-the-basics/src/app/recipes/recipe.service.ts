@@ -1,12 +1,35 @@
 import { EventEmitter } from '@angular/core';
 import { Recipe } from './recipe.model'
+import { Ingredient } from '../shared/ingredient.model';
 
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
 
   private recipes: Recipe[] = [
-    new Recipe('A Test Recipe', 'This is simply a test', 'https://images.pexels.com/photos/4551832/pexels-photo-4551832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-    new Recipe('Another Test Recipe', 'This is simply a test', 'https://images.pexels.com/photos/4551832/pexels-photo-4551832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+    new Recipe(
+    'Carne Asada Tacos',
+    'Delicious juicy and tender beef tacos!',
+    'https://images.pexels.com/photos/8999152/pexels-photo-8999152.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    [
+      new Ingredient('Meat', 1),
+      new Ingredient('Corn Tortillas', 2),
+      new Ingredient('Salsa', 2),
+      new Ingredient('Onion', 1),
+      new Ingredient('Cilantro', 1),
+      new Ingredient('Lime', 1)
+    ]),
+    new Recipe(
+      'Ramen Bowl',
+      'Yummy Ramen to satiate your hunger!',
+      'https://images.pexels.com/photos/15085069/pexels-photo-15085069/free-photo-of-food-restaurant-dinner-lunch.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      [
+        new Ingredient('Noodles', 1),
+        new Ingredient('Eggs', 1),
+        new Ingredient('Chicken', 1),
+        new Ingredient('Broth', 1),
+        new Ingredient('Green Onion', 1),
+        new Ingredient('Seaweed', 1)
+      ])
   ];
 
   getRecipes() {
