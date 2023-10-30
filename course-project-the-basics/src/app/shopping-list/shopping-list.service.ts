@@ -1,4 +1,4 @@
-import { Subject } from "rxjs";
+import { Subject } from "rxjs/internal/Subject";
 
 import { Ingredient } from "../shared/ingredient.model";
 
@@ -13,6 +13,10 @@ export class ShoppingListService {
 
   getIngredients() {
     return this.ingredients.slice();
+  }
+
+  getIngredient(index: number) {
+    return this.ingredients[index];
   }
 
   addIngredient(ingredient: Ingredient) {
