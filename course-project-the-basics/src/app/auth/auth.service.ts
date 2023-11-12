@@ -1,10 +1,5 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { environment } from "src/environments/environment.development";
-
-const FIREBASE_WEB_API_KEY = environment.firebaseApiKey;
-const FIREBASE_SIGN_UP_URL = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_SIGN_UP_URL}';
-const FIREBASE_SIGN_IN_URL = '';
 
 interface AuthResponseData {
   // kind: string; //Max's video has it but the firebase web doesn't now
@@ -26,7 +21,7 @@ export class AuthService {
 
   signup(email: string, password: string) {
     return this.http.post<AuthResponseData>(
-      FIREBASE_SIGN_UP_URL,
+      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD5v85xSyBfcm4X35RIN3gik4uHO3_7Leo',
       {
         email: email,
         password: password,
