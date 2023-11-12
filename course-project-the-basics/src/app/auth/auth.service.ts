@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { catchError } from "rxjs/operators";
+import { throwError } from "rxjs";
 
 interface AuthResponseData {
   // kind: string; //Max's video has it but the firebase web doesn't now
@@ -27,6 +29,18 @@ export class AuthService {
         password: password,
         returnSecureToken: true
       }
-    );
+    ).pipe(catchError(errorRes => {
+      let errorMessage = 'An unknown error occured!';
+      if (!errorRes.error || !errorRes.error.error) {
+      // return throwError(errorMessage); //Max's code but deprecated
+        return throwError(() => new Error(errorMessage));
+      }
+      switch (errorRes.error.error.message) {
+        case 'EMAIL_EXISTS':
+          errorMessage = 'This email exists already';
+      }
+      // return throwError(errorMessage); //Max's code but deprecated
+      return throwError(() => new Error(errorMessage));
+    }));
   }
 }
