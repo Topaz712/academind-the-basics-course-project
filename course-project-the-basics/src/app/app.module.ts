@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
+import { LoggingService } from './logging.service';
 
 
 @NgModule({
@@ -18,9 +19,7 @@ import { CoreModule } from './core.module';
     SharedModule,
     CoreModule
   ],
-  providers: [
-
-  ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // providers: [LoggingService]//can be provided in appmodule too,has same effect as using @injectable in logging.service.ts
 })
 export class AppModule { }
